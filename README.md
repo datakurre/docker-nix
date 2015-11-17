@@ -1,1 +1,1 @@
-BusyBox based single-user Nix installation.
+BusyBox based single-user Nix image for Docker
