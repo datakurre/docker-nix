@@ -4,7 +4,7 @@ ENV USER="user" HOME="/home/user" \
     NIX_PATH="nixpkgs=/var/nixpkgs" \
     GIT_SSL_CAINFO="/nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt" \
     SSL_CERT_FILE="/nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt"
-# Bootsrap env using busybox
+# Bootstrap env using busybox
 ADD busybox /busybox
 RUN ["/busybox/busybox-86_64", "ln", "-s", "/busybox", "/bin"]
 RUN \
