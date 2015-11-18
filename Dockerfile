@@ -34,6 +34,7 @@ su - user -c "$nix/bin/nix-store --init" && \
 su - user -c "$nix/bin/nix-store --load-db < /nix/.reginfo" && \
 su - user -c "$nix/bin/nix-env -i $nix --option use-binary-caches false \
 `find /nix -type d -name '*-cacert-'*` \
+`find /nix -type d -name '*-bash-'*` \
 `find /nix -type d -name '*-bzip2-'*` \
 `find /nix -type d -name '*-coreutils-*'` \
 `find /nix -type d -name '*-curl-*'` \
