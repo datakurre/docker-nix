@@ -30,15 +30,16 @@ su - user -c "ln -s /var/nixpkgs /home/user/.nix-defexpr/channels" && \
 # Init Nix and its default profile
 mkdir -p -m 0777 /tmp && \
 nix=`find /nix -type d -name "*-nix-*"` && \
-bash=`find /nix -type d -name "*-bash-*"` && \
-cacert=`find /nix -type d -name "*-cacert-*"` && \
-coreutils=`find /nix -type d -name "*-coreutils-*"` && \
 su - user -c "$nix/bin/nix-store --init" && \
 su - user -c "$nix/bin/nix-store --load-db < /nix/.reginfo" && \
-su - user -c "$nix/bin/nix-env -i $nix --option use-binary-caches false" && \
-su - user -c "$nix/bin/nix-env -i $bash --option use-binary-caches false" && \
-su - user -c "$nix/bin/nix-env -i $cacert --option use-binary-caches false" && \
-su - user -c "$nix/bin/nix-env -i $coreutils --option use-binary-caches false" && \
+su - user -c "$nix/bin/nix-env -i $nix --option use-binary-caches false \
+`find /nix -type d -name '*-cacert-'*` \
+`find /nix -type d -name '*-bzip2-'*` \
+`find /nix -type d -name '*-coreutils-*'` \
+`find /nix -type d -name '*-curl-*'` \
+`find /nix -type d -name '*-gnutar-*'` \
+`find /nix -type d -name '*-gzip-*'` \
+`find /nix -type d -name '*-xz-*'`" && \
 su - user -c "$nix/bin/nix-collect-garbage -d" && \
 \
 # Fix permissions
