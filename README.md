@@ -1,5 +1,5 @@
-Minimal base image with Nix environment
-=======================================
+Nix image for Docker
+====================
 
 Executing software from Nixpkgs:
 
