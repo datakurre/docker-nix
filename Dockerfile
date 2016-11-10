@@ -9,11 +9,11 @@ ADD busybox /busybox
 RUN ["/busybox/busybox-86_64", "ln", "-s", "/busybox", "/bin"]
 RUN \
 # Download and unpack Nix
-version="1.10" && \
+version="1.11" && \
 basename="nix-$version-x86_64-linux" && \
 wget -O- http://nixos.org/releases/nix/nix-$version/$basename.tar.bz2 | \
 bzcat - | tar xf - && \
-mv nix-1.10-x86_64-linux /nix && \
+mv $basename /nix && \
 \
 # Download, unpack Nixpkgs
 wget -O- http://nixos.org/channels/nixpkgs-unstable/nixexprs.tar.xz | \
